@@ -2,3 +2,5 @@
 2. Swear Words
 3. Racial Slurs
 4. Sexual References 
+5. Violent Words
+6. Miscellaneous

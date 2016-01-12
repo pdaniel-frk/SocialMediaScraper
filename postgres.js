@@ -7,7 +7,7 @@ secretstring = secretstring.replace(/(?:\n)/g,"");
 var dbconnection = secretstring + "?ssl=true";
 
 //import bad words text
-var words = JSON.parse(fs.readFileSync("words/drugs.txt").toString());
+var words = JSON.parse(fs.readFileSync("words/VarietyList2.txt").toString());
 var severity = 0;
 
 //open db connection
@@ -18,8 +18,12 @@ dbconn.connect(function(err){
 	}
 	//loop through local words list and assign values
 	for(i=0;i<words.length;i++){
-		severity = readlineSync.question(words[i]+": ");
-		dbconn.query("INSERT INTO words (word,severity,db_id) values(\'" + words[i] + "\',\'" + severity + "\',1);",function(err,result){
+		severity = readlineSync.question(words[i]+" severity: ");
+		db_id = readlineSync.question(words[i]+" db_id: ");
+		if(db_id == ''){
+			db_id = 4;
+		}
+		dbconn.query("INSERT INTO words (word,severity,db_id) values(\'" + words[i] + "\',\'" + severity + "\',\'" + db_id + "\');",function(err,result){
 			if(err){console.log(err)}
 		});
 	}
