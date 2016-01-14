@@ -17,7 +17,7 @@ import java.sql.*;
 public class Main {
 	
 	private static void createDatabaseConnection(){
-		String databaseUrl = "jdbc:postgresql://ec2-107-21-223-147.compute-1.amazonaws.com:5432/dabm70tdpvvlg2?user=fsrnljewfdwtpj&password=AuyZLjnxkkdMGY2CKqu93YA8IG&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+		String databaseUrl = "jdbc:";
 		ConnectionSource connectionSource;
 		try {
 			connectionSource = new JdbcConnectionSource(databaseUrl);
