@@ -25,20 +25,20 @@ public class User {
 	private String password;
 	
 	@DatabaseField(columnName = "twit_id")
-	private Integer twitter_id;
+	private Integer twitterId;
 	
 	@DatabaseField(columnName = "db_id")
-	private Integer db_id;
+	private Integer dbId;
 	
 	public User(){
 		
 	}
 
-	public int getid() {
+	public Integer getid() {
 		return id;
 	}
 
-	public void setID(int id) {
+	public void setID(Integer id) {
 		this.id = id;
 	}
 
@@ -66,19 +66,27 @@ public class User {
 		this.email = email;
 	}
 
-	public void setTwit_id(Integer Twit){
-		this.twitter_id = Twit;
+	public String getPassword(){
+		return password;
 	}
 
-	public Integer getTwit_id(Integer Twit){
-		return this.twitter_id;
+	public void setPassword(String password){
+		this.password = password;
+	}
+
+	public Integer getTwitterId(){
+		return twitterId;
 	}
 	
-	public Integer getDb_id(Integer db_id){
-		return this.db_id;
+	public void setTwitterId(Integer twitterId){
+		this.twitterId = twitterId;
 	}
 	
-	public void setDb_id(Integer db_id){
-		this.db_id = db_id;
+	public Integer getDbId(){
+		return dbId;
+	}
+	
+	public void setDbId(Integer dbId){
+		this.dbId = dbId;
 	}
 }

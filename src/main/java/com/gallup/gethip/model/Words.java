@@ -19,7 +19,7 @@ public class Words {
 	private String severity;
 	
 	@DatabaseField(columnName = "db_id")
-	private Integer db_id;
+	private Integer dbId;
 	
 	public Words(){
 		
@@ -49,12 +49,12 @@ public class Words {
 		this.severity = severity;
 	}
 
-	public Integer getDb_id() {
-		return db_id;
+	public Integer getDbId() {
+		return dbId;
 	}
 
-	public void setCategory(Integer db_id) {
-		this.db_id = db_id;
+	public void setDbId(Integer dbId) {
+		this.dbId = dbId;
 	}
 
 }

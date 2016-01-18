@@ -18,23 +18,26 @@ public class Kid {
 	@DatabaseField(columnName = "offending_tweets")
 	private Integer offending_tweets;
 
+	@DatabaseField(columnName = "last_processed")
+	private Long last_processed;
+
 	public Kid(){
 		
 	}
 
-	public int getTwit_id() {
+	public int getTwitId() {
 		return twitter_id;
 	}
 
-	public void setTwit_id(int twitterId) {
+	public void setTwitId(int twitterId) {
 		this.twitter_id = twitterId;
 	}
 
-	public int getSevertiy() {
-		return this.severity;
+	public Integer getSeverity() {
+		return severity;
 	}
 
-	public void setSeverity(int severity) {
+	public void setSeverity(Integer severity) {
 		this.severity = severity;
 	}
 
@@ -42,7 +45,15 @@ public class Kid {
 		return offending_tweets;
 	}
 
-	public void setOffendingTweets(int tweets){
-		this.offending_tweets = tweets;
+	public void setOffendingTweets(int offending_tweets){
+		this.offending_tweets = offending_tweets;
 	}
+
+	public Long getLastProcessed(){
+		return last_processed;
 	}
+
+	public void setLastProcessed(Long last_processed){
+		this.last_processed = last_processed;
+	}
+}
