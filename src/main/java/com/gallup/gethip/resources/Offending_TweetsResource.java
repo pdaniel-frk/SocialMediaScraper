@@ -14,12 +14,13 @@ import javax.ws.rs.QueryParam;
 import com.gallup.gethip.DataSourceManager;
 import com.j256.ormlite.dao.Dao;
 import com.gallup.gethip.model.*;
+
 @Path("/offending_tweets")
 public class Offending_TweetsResource {
 
     @GET 
     @Produces("application/json")
-    public Offending_tweets getWord(@QueryParam("twit_id") String id) {
+    public Offending_tweets getTweets(@QueryParam("twit_id") String id) {
     	Offending_tweets tweets = null;
     	try {
 			tweets = getDao().queryForId(id);
@@ -36,7 +37,7 @@ public class Offending_TweetsResource {
     }
     
     private Dao<Offending_tweets, String> getDao(){
-    	Dao<Offending_tweets, String> dao = DataSourceManager.getInstance().getDao(Words.class);
+    	Dao<Offending_tweets, String> dao = DataSourceManager.getInstance().getDao(Offending_tweets.class);
     	return dao;
     }
 }

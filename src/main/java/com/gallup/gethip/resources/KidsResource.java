@@ -75,6 +75,23 @@ public class KidsResource {
 		}
 		return false;
     }
+
+    @DELETE
+    @Produces ("text/plain")
+    public String deleteKid(@QueryParam("twit_id") String id){
+        try {
+            int num = getDao().deleteById(id);
+            if(num == 1){
+                return "Delete successful";
+            }else{
+                return "Unable to delete";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "Error in sql statement";
+        }
+    }
+
     private Dao<Kid, String> getDao(){
     	Dao<Kid, String> dao = DataSourceManager.getInstance().getDao(Kid.class);
     	return dao;

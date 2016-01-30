@@ -14,6 +14,7 @@ import javax.ws.rs.QueryParam;
 import com.gallup.gethip.DataSourceManager;
 import com.j256.ormlite.dao.Dao;
 import com.gallup.gethip.model.*;
+
 @Path("/words")
 public class WordsResource {
 
