@@ -1,0 +1,25 @@
+{
+  "name": "SocialMediaScraper",
+  "version": "0.0.1",
+  "description": "A service that allows parents to monitor their child's social media accounts.",
+  "author": "Dash Wedergren",
+  "main": "./bin/main.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://git@github.com/Dash-Wedergren/SocialMediaScraper/tree/node"
+  },
+  "bugs": {
+    "url": "https://github.com/Dash-Wedergren/SocialMediaScraper/issues"
+  },
+  "homepage": "https://github.com/Dash-Wedergren/SocialMediaScraper/tree/node",
+  "dependencies": {
+    "express": "*"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0"
+  },
+  "private": true
+}
