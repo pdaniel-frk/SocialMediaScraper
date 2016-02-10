@@ -1,6 +1,8 @@
 var request = require("request");
 
-request("http://localhost:9998/users?id=2", function(error, response, body) {
+var port = 8080;
+
+request("http://localhost:" + port + "/users?id=2", function(error, response, body) {
 	if(body){
 		body = JSON.parse(body)
 		console.log("Users:");
@@ -9,7 +11,7 @@ request("http://localhost:9998/users?id=2", function(error, response, body) {
 	}
 });
 
-request("http://localhost:9998/kids?twit_id=20293902", function(error, response, body){
+request("http://localhost:" + port + "/kids?twit_id=20293902", function(error, response, body){
 	if(body){
 		body = JSON.parse(body);
 		console.log("Kids:");
@@ -18,7 +20,7 @@ request("http://localhost:9998/kids?twit_id=20293902", function(error, response,
 	}
 });
 
-request("http://localhost:9998/words?id=1", function(error, response , body){
+request("http://localhost:" + port + "/words?id=1", function(error, response , body){
 	if(body){
 		body = JSON.parse(body);
 		console.log("Words:")
@@ -27,7 +29,7 @@ request("http://localhost:9998/words?id=1", function(error, response , body){
 	}
 });
 
-request("http://localhost:9998/offending_tweets?twit_id=20293902", function(error, response, body){
+request("http://localhost:" + port + "offending_tweets?twit_id=20293902", function(error, response, body){
 	if(body){
 		body = JSON.parse(body);
 		console.log("Offending_Tweets:");
