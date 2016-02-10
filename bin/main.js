@@ -67,10 +67,17 @@ app.route('/api/v1/users/:id')
 });
 
 //kids
-app.route('/api/v1/kids')
-.get(function(req, res, next){
+app.route('/api/v1/kids/:id')
+.all(function(req, res, next){
 	console.log(req.method + " /api/v1/kids/");
 	next();
+})
+.get(function(req, res, next){
+	var query = kids.select(kids.star()).from(kids).where(kids.twit_id.equals(req.params.id)).toQuery();
+	client.query(query, function(err, result){
+		if(err){res.send("Error in processing the Query")}
+		res.send(result.rows[0])
+	});
 })
 .post(function(req, res, next){
 
@@ -83,10 +90,17 @@ app.route('/api/v1/kids')
 });
 
 //words
-app.route('/api/v1/words')
-.get(function(req, res, next){
+app.route('/api/v1/words/:id')
+.all(function(req, res, next){
 	console.log(req.method + " /api/v1/words/");
 	next();
+})
+.get(function(req, res, next){
+	var query = words.select(words.star()).from(words).where(words.id.equals(req.params.id)).toQuery();
+	client.query(query, function(err, result){
+		if(err){res.send("Error in processing the Query")}
+		res.send(result.rows[0]);
+	});
 })
 .post(function(req, res, next){
 
@@ -99,10 +113,17 @@ app.route('/api/v1/words')
 });
 
 //offending_tweets
-app.route('/api/v1/offending_tweets')
-.get(function(req, res, next){
+app.route('/api/v1/offending_tweets/:id')
+.all(function(req, res, next){
 	console.log(req.method + " /api/v1/offending_tweets/");
 	next();
+})
+.get(function(req, res, next){
+	var query = offending_tweets.select(offending_tweets.star()).from(offending_tweets).where(offending_tweets.twit_id.equals(req.params.id)).toQuery();
+	client.query(query, function(err, result){
+		if(err){res.send("Error in processing the Query")}
+		res.send(result.rows[0]);
+	});
 })
 .post(function(req, res, next){
 
