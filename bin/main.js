@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 sql.setDialect('postgres');
 
 //read db connection string
-var secretstring = fs.readFileSync("../../postgres.txt").toString();
+var secretstring = fs.readFileSync("../../local.txt").toString();
 secretstring = secretstring.replace(/(?:\n)/g,"") + "?ssl=true";
 
 //connect to db
@@ -42,6 +42,13 @@ var words = sql.define({
 	name: "words",
 	columns: ['id', 'word', 'severity', 'db_id']
 });
+
+//sanaitization function
+function sanaitize(unsafe){
+var safe;
+safe = unsafe.replace(/[^a-z0-9-_]/gim,"");
+return safe;
+}
 
 //users
 app.route('/api/v1/users/:id')
@@ -76,7 +83,9 @@ app.route('/api/v1/kids/:id')
 	var query = kids.select(kids.star()).from(kids).where(kids.twit_id.equals(req.params.id)).toQuery();
 	client.query(query, function(err, result){
 		if(err){res.send("Error in processing the Query")}
-		res.send(result.rows[0])
+		if(result){
+			res.send(result.rows[0])
+		}
 	});
 })
 .post(function(req, res, next){
