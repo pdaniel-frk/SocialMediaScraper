@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var pg = require('pg');
 var fs = require('fs');
 var sql = require('sql');
+var scheme = require('./db_utils/scheme.js')
 
 //express config
 var app = express();
@@ -22,33 +23,17 @@ client.connect(function(err){
 	if(err){console.log(err)}
 });
 
-//db scheme
-var users = sql.define({
-	name: "users",
-	columns: ['id','first', 'last', 'email', 'password', 'twit_id', 'db_id']
-});
-
-var offending_tweets = sql.define({
-	name: "offending_tweets",
-	columns: ['twit_id', 'text', 'id']
-});
-
-var kids = sql.define({
-	name: "kids",
-	columns: ['twit_id', 'severity', 'offending_tweets', 'last_processed']
-});
-
-var words = sql.define({
-	name: "words",
-	columns: ['id', 'word', 'severity', 'db_id']
-});
-
 //sanaitization function
 function sanaitize(unsafe){
 var safe;
 safe = unsafe.replace(/[^a-z0-9-_]/gim,"");
 return safe;
 }
+
+var users = scheme.users;
+var words = scheme.words;
+var kids = scheme.kids;
+var offending_tweets = scheme.offending_tweets;
 
 //users
 app.route('/api/v1/users/:id')
@@ -63,14 +48,14 @@ app.route('/api/v1/users/:id')
 		res.send(result.rows[0]);
 	});
 })
-.post(function(req, res, next){
-
-})
 .put(function(req, res, next){
 
 })
 .delete(function(req, res, next){
 
+});
+app.post('/api/v1/users', function(req, res){
+	//var query = users.insert(users.)
 });
 
 //kids
@@ -88,13 +73,13 @@ app.route('/api/v1/kids/:id')
 		}
 	});
 })
-.post(function(req, res, next){
-
-})
 .put(function(req, res, next){
 
 })
 .delete(function(req, res, next){
+
+});
+app.post('/api/v1/kids', function(req, res){
 
 });
 
@@ -111,13 +96,13 @@ app.route('/api/v1/words/:id')
 		res.send(result.rows[0]);
 	});
 })
-.post(function(req, res, next){
-
-})
 .put(function(req, res, next){
 
 })
 .delete(function(req, res, next){
+
+});
+app.post('/api/v1/words', function(req, res){
 
 });
 
@@ -134,13 +119,13 @@ app.route('/api/v1/offending_tweets/:id')
 		res.send(result.rows[0]);
 	});
 })
-.post(function(req, res, next){
-
-})
 .put(function(req, res, next){
 
 })
 .delete(function(req, res, next){
+
+});
+app.post('/api/v1/offending_tweets', function(req, res){
 
 });
 
